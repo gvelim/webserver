@@ -1,11 +1,13 @@
 # syntax=docker/dockerfile:1
 FROM balenalib/raspberry-pi-debian-python:latest
 
-WORKDIR /mysite
+WORKDIR /usr/src/mysite
 
-COPY mysite .
+COPY . .
 
 RUN pip install -r requirements.txt
+
+EXPOSE 8080
 
 CMD python manage.py runserver 0.0.0.0:8080
 
